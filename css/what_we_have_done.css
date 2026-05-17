@@ -20,6 +20,12 @@
     background-color: var(--white);
 }
 
+.logo-img {
+    max-height: 50px; 
+    width: auto;
+    display: block;
+}
+
 .main-title {
     font-family: var(--font-poppins);
     font-size: clamp(32px, 5vw, 42px);

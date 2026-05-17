@@ -15,8 +15,11 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Logo</div>
-            <div class="nav-links">
+            <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html">About</a>
                 <a href="index2.html">Approach</a>
@@ -24,14 +27,19 @@
                 <a href="index4.html">What We Have Done</a>
                 <a href="index6.html">Download</a>
             </div>
-            <a href="index5.html" class="btn-catalog active">
-                <i class="ri-book-read-line"></i> Catalog
-            </a>
+             <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog active">
+                    <i class="ri-book-read-line"></i> Catalog
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <main class="detail-container">
-        <!-- Tambah class reveal -->
         <div class="back-navigation reveal">
             <a href="index5.html" class="btn-back">
                 <i class="ri-arrow-left-line"></i>
@@ -39,7 +47,6 @@
             </a>
         </div>
         
-        <!-- Tambah class reveal dan delay -->
         <h1 class="program-title reveal delay-1">TRAINING NEED <span class="text-yellow">ANALYSIS</span></h1>
 
         <section class="overview-section">
@@ -96,7 +103,6 @@
                 </ul>
             </div>
             
-            <!-- Dibungkus info-sidebar agar susunannya rapi sesuai CSS baru -->
             <div class="info-sidebar">
                 <div class="package-box reveal delay-2">
                     <h3>Paket In-House</h3>
@@ -121,7 +127,7 @@
                 <i class="ri-arrow-right-up-line arrow-icon"></i>
             </a>
             <p class="registration-note">*Pendaftaran akan diarahkan ke Form</p>
-        </div> <!-- Penutup div yang tadi hilang -->
+        </div> 
     </main>
 
     <footer class="footer">
@@ -159,9 +165,9 @@
         </div>
     </footer>
 
-    <!-- Animasi Scroll -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Logika Animasi Scroll
             const reveals = document.querySelectorAll(".reveal");
             const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 
@@ -175,6 +181,22 @@
             }, revealOptions);
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // Logika Toggle Hamburger Menu Mobile (Ditambahkan)
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
         });
     </script>
 </body>

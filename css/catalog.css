@@ -58,6 +58,12 @@
     margin-bottom: 20px;
 }
 
+.logo-img {
+    max-height: 50px; 
+    width: auto;
+    display: block;
+}
+
 .hero-content p {
     font-size: 15px;
     line-height: 1.6;

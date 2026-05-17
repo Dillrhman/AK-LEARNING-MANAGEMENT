@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training for Trainers - AK Learning</title>
+    <title>Training Effectiveness Evaluation - AK Learning</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
     
+    <!-- CSS Dasar Navbar & Footer -->
     <link rel="stylesheet" href="css/approach.css">
     <link rel="stylesheet" href="css/detail_catalog.css">
 </head>
@@ -15,8 +16,12 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Logo</div>
-            <div class="nav-links">
+            <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <!-- Ditambahkan id="navLinks" -->
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html">About</a>
                 <a href="index2.html">Approach</a>
@@ -24,9 +29,18 @@
                 <a href="index4.html">What We Have Done</a>
                 <a href="index6.html">Download</a>
             </div>
-            <a href="index5.html" class="btn-catalog">
-                <i class="ri-book-read-line"></i> Catalog
-            </a>
+            
+            <!-- Pembungkus Catalog dan Hamburger Menu -->
+            <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog">
+                    <i class="ri-book-read-line"></i> Catalog
+                </a>
+                
+                <!-- Tombol Hamburger Mobile -->
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -62,22 +76,20 @@
         <!-- Method Section -->
         <section class="method-section reveal">
             <h3 class="method-title">Metode</h3>
-            <br>
-            <br>
             <div class="method-grid">
-                <div class="method-item reveal">
+                <div class="method-item reveal delay-1">
                     <div class="img-wrapper">
                         <img src="img/presentation-vector.jpg" alt="Presentasi">
                     </div>
                     <p>Presentasi</p>
                 </div>
-                <div class="method-item reveal">
+                <div class="method-item reveal delay-2">
                     <div class="img-wrapper">
                         <img src="img/Tanya-jawab-Photoroom.jpg" alt="Tanya Jawab">
                     </div>
                     <p>Tanya Jawab</p>
                 </div>
-                <div class="method-item reveal">
+                <div class="method-item reveal delay-3">
                     <div class="img-wrapper">
                         <img src="img/praktek-Photoroom.jpg" alt="Praktek">
                     </div>
@@ -85,9 +97,6 @@
                 </div>
             </div>
         </section>
-
-        <br>
-        <br>
 
         <!-- Info Grid -->
         <div class="info-grid reveal">
@@ -103,18 +112,21 @@
                     <li>Form evaluasi training</li>
                 </ul>
             </div>
-            <div class="package-box">
-                <h3>Paket In-House</h3>
-                <div class="package-detail">
-                    <p>Min : 10 Orang</p>
-                    <p>Max : 20 Orang</p>
+            
+            <!-- Dibungkus dengan info-sidebar agar sejajar dan rapi seperti halaman lain -->
+            <div class="info-sidebar">
+                <div class="package-box">
+                    <h3>Paket In-House</h3>
+                    <div class="package-detail">
+                        <p>Min : 10 Orang</p>
+                        <p>Max : 20 Orang</p>
+                    </div>
+                </div>
+
+                <div class="investment-bar">
+                    Investasi : Rp. 6.000.000,00
                 </div>
             </div>
-        </div>
-
-        <!-- Investment Bar -->
-        <div class="investment-bar reveal">
-            Investasi : Rp. 6.000.000,00
         </div>
 
         <!-- Registration Container -->
@@ -165,9 +177,9 @@
         </div>
     </footer>
 
-    <!-- Animasi Scroll -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Animasi Scroll
             const reveals = document.querySelectorAll(".reveal");
             const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 
@@ -181,6 +193,22 @@
             }, revealOptions);
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // Logika Toggle Hamburger Menu Mobile
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
         });
     </script>
 </body>

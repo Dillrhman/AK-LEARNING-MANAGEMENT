@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training for Trainers - AK Learning</title>
+    <title>Training Effectiveness Evaluation - AK Learning</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
@@ -15,8 +15,11 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Logo</div>
-            <div class="nav-links">
+           <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html">About</a>
                 <a href="index2.html">Approach</a>
@@ -24,14 +27,20 @@
                 <a href="index4.html">What We Have Done</a>
                 <a href="index6.html">Download</a>
             </div>
-            <a href="index5.html" class="btn-catalog active">
-                <i class="ri-book-read-line"></i> Catalog
-            </a>
+
+            <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog active">
+                    <i class="ri-book-read-line"></i> Catalog
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <main class="detail-container">
-        <!-- Tombol kembali -->
         <div class="back-navigation reveal">
             <a href="index5.html" class="btn-back">
                 <i class="ri-arrow-left-line"></i>
@@ -39,28 +48,25 @@
             </a>
         </div>
 
-        <h1 class="program-title reveal delay-1">TRAINING FOR <span class="text-yellow">TRAINERS</span></h1>
+        <h1 class="program-title reveal delay-1">TRAINING EFFECTIVENESS <span class="text-yellow">EVALUATION</span></h1>
 
-        <!-- Bagian Overview -->
         <section class="overview-section">
             <div class="overview-text reveal delay-2">
                 <h3 class="section-subtitle">Gambaran Singkat</h3>
-                <p>Keberhasilan suatu training sangat bergantung pada trainer dalam membawakan sesi training. Seorang trainer harus mampu membuat dan membawakan materi yang akan disampaikan sampai dengan tahap evaluasi.</p>
-                <p>Training ini sangat membantu para calon trainer maupun trainer yang akan mengembangkan kemampuan diri untuk menyiapkan, membawakan, dan melakukan evaluasi training.</p>
+                <p>Dalam suatu penyelenggaraan training, terkadang beberapa organisasi melupakan proses evaluasi pada keseluruhan training. Efektivitas training sangat penting dilakukan evaluasi untuk memastikan tujuan yang diinginkan dapat tercapai.</p>
+                <p>Training ini memberikan jawaban akan kebutuan organisasi untuk mengukur efektivitas training mulai dari penyelenggaraan, perkembangan pengetahuan dan keterampilan, perubahan perilaku, sampai dengan dampak sebelum dan setelah training.</p>
             </div>
             <div class="participants-card reveal delay-3">
                 <h4>Peserta</h4>
                 <ul>
-                    <li>Calon Trainer</li>
-                    <li>Trainer</li>
-                    <li>Staff</li>
+                    <li>Staff HR</li>
+                    <li>Staff Training</li>
                     <li>Supervisor</li>
                     <li>Manager</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Bagian Metode -->
         <section class="method-section reveal">
             <h3 class="method-title">Metode</h3>
             <div class="method-grid">
@@ -85,23 +91,21 @@
             </div>
         </section>
 
-        <!-- Bagian Materi & Paket -->
         <div class="info-grid">
             <div class="materi-box reveal delay-1">
                 <h3>Materi</h3>
                 <ul>
-                    <li>Dasar Training</li>
-                    <li>Menetapkan tujuan dan sasaran training</li>
-                    <li>Proses belajar mengajar</li>
-                    <li>Persiapan presentasi</li>
-                    <li>Pemilihan metode pelatihan</li>
-                    <li>Teknik menghadapi audience</li>
-                    <li>Teknik ice breaking</li>
-                    <li>Evaluasi training</li>
+                    <li>Analisa kebutuhan training</li>
+                    <li>Penetapan sasaran training</li>
+                    <li>Level evaluasi training</li>
+                    <li>Model evaluasi training</li>
+                    <li>Pengelolaan evaluasi training</li>
+                    <li>Hubungan analisa kebutuhan training dengan evaluasi program training</li>
+                    <li>Form evaluasi training</li>
                 </ul>
             </div>
             
-            <!-- Box sebelah kanan (Paket & Investasi saya gabung ke satu kolom logis) -->
+            <!-- Wrapper Info Sidebar yang menyatukan box in-house & investasi -->
             <div class="info-sidebar">
                 <div class="package-box reveal delay-2">
                     <h3>Paket In-House</h3>
@@ -117,7 +121,6 @@
             </div>
         </div>
 
-        <!-- Tombol Daftar -->
         <div class="registration-container reveal">
             <a href="form_daftar.html" class="btn-register-now">
                 <div class="btn-content">
@@ -165,9 +168,9 @@
         </div>
     </footer>
 
-    <!-- Animasi Scroll -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Animasi Scroll
             const reveals = document.querySelectorAll(".reveal");
             const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 
@@ -181,6 +184,22 @@
             }, revealOptions);
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // Logika Toggle Hamburger Menu Mobile
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
         });
     </script>
 </body>

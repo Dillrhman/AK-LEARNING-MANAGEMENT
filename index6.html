@@ -17,18 +17,28 @@
 
     <header class="navbar">
         <div class="nav-container">
-            <div class="logo">AK Learning</div>
-            <nav class="nav-links">
+            <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <nav class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html">About</a>
                 <a href="index2.html">Approach</a>
                 <a href="index3.html">What We Do</a>
                 <a href="index4.html">What We Have Done</a>
-                <a href="index6.html" class="active">Download Ebook</a>
+                <a href="index6.html" class="active">Download </a>
             </nav>
-            <a href="index5.html" class="btn-catalog">
-                <i class="ri-book-read-line"></i> Catalog
-            </a>
+            
+            <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog">
+                    <i class="ri-book-read-line"></i> Catalog
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -55,10 +65,10 @@
                             <br>
                         </p>
                         <div class="ebook-actions">
-                            <button class="btn-preview" onclick="openPreview('pdf/Kerjaannya Cuma Nyari Orang Coba Sini Duduk Dulu-AK-EBook.pdf')">
+                            <button class="btn-preview" onclick="openPreview('pdf/Kerjaannya Cuma Nyari Orang Coba Sini Duduk Dulu-AK-EBook (2).pdf')">
                                 <i class="ri-eye-line"></i> Preview
                             </button>
-                            <a href="pdf/Kerjaannya Cuma Nyari Orang Coba Sini Duduk Dulu-AK-EBook.pdf" download class="btn-download-action">
+                            <a href="pdf/Kerjaannya Cuma Nyari Orang Coba Sini Duduk Dulu-AK-EBook (2).pdf" download class="btn-download-action">
                                 <i class="ri-download-2-line"></i> Download
                             </a>
                         </div>
@@ -75,10 +85,10 @@
                             Perusahaan yang Kadang Melelahkan, Kadang Menggelikan
                         </p>
                         <div class="ebook-actions">
-                            <button class="btn-preview" onclick="openPreview('pdf/Mau Nya Training Dapatnya Drama-AK-EBook.pdf')">
+                            <button class="btn-preview" onclick="openPreview('pdf/Maunya Training, Dapatnya Drama-AK-EBook (1).pdf')">
                                 <i class="ri-eye-line"></i> Preview
                             </button>
-                            <a href="pdf/Mau Nya Training Dapatnya Drama-AK-EBook.pdf" download class="btn-download-action">
+                            <a href="pdf/Maunya Training, Dapatnya Drama-AK-EBook (1).pdf" download class="btn-download-action">
                                 <i class="ri-download-2-line"></i> Download
                             </a>
                         </div>
@@ -96,10 +106,10 @@
                             <br>
                         </p>
                         <div class="ebook-actions">
-                            <button class="btn-preview" onclick="openPreview('pdf/HR Hitung Rasa Kerja Tak Terasa-AK-EBook.pdf')">
+                            <button class="btn-preview" onclick="openPreview('pdf/HR Hitung Rasa, Kerja Tak Terasa-AK-EBook (1).pdf')">
                                 <i class="ri-eye-line"></i> Preview
                             </button>
-                            <a href="pdf/HR Hitung Rasa Kerja Tak Terasa-AK-EBook.pdf" download class="btn-download-action">
+                            <a href="pdf/HR Hitung Rasa, Kerja Tak Terasa-AK-EBook (1).pdf" download class="btn-download-action">
                                 <i class="ri-download-2-line"></i> Download
                             </a>
                         </div>
@@ -117,10 +127,10 @@
                             <br>
                         </p>
                         <div class="ebook-actions">
-                            <button class="btn-preview" onclick="openPreview('pdf/Training Catalog-AK-EBook.pdf')">
+                            <button class="btn-preview" onclick="openPreview('pdf/Training Catalog-AK Learning Development (1).pdf')">
                                 <i class="ri-eye-line"></i> Preview
                             </button>
-                            <a href="pdf/Training Catalog-AK-EBook.pdf" download class="btn-download-action">
+                            <a href="pdf/Training Catalog-AK Learning Development (1).pdf" download class="btn-download-action">
                                 <i class="ri-download-2-line"></i> Download
                             </a>
                         </div>
@@ -138,10 +148,10 @@
                             <br>
                         </p>
                         <div class="ebook-actions">
-                            <button class="btn-preview" onclick="openPreview('pdf/Company Profile-AK-EBook.pdf')">
+                            <button class="btn-preview" onclick="openPreview('pdf/Company Profile-AK Learning Development (1).pdf')">
                                 <i class="ri-eye-line"></i> Preview
                             </button>
-                            <a href="pdf/Company Profile-AK-EBook.pdf" download class="btn-download-action">
+                            <a href="pdf/Company Profile-AK Learning Development (1).pdf" download class="btn-download-action">
                                 <i class="ri-download-2-line"></i> Download
                             </a>
                         </div>
@@ -164,5 +174,24 @@
     </div>
 
     <script src="download.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

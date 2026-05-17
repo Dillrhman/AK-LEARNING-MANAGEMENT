@@ -13,24 +13,33 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">AK Learning</div>
-            <div class="nav-links">
+            <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html">About</a>
                 <a href="index2.html">Approach</a>
                 <a href="index3.html" class="active">What We Do</a>
                 <a href="index4.html">What We Have Done</a>
-                <a href="index6.html">Download</a>
+                <a href="index6.html">Download Ebook</a>
             </div>
-            <a href="index5.html" class="btn-catalog">
-                <i class="ri-book-read-fill"></i> Catalog
-            </a>
+
+            <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog">
+                    <i class="ri-book-read-fill"></i> Catalog
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <section class="wwd-section">
         <div class="container">
-            <!-- Judul utama -->
             <h1 class="main-title reveal">WHAT WE DO</h1>
             
             <div class="wwd-grid">
@@ -103,9 +112,9 @@
         </div>
     </footer>
 
-   
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Animasi Scroll
             const reveals = document.querySelectorAll(".reveal");
             const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 
@@ -119,6 +128,22 @@
             }, revealOptions);
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // Hamburger Menu Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
         });
     </script>
 </body>

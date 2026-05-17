@@ -15,34 +15,41 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">AK Learning</div>
-            <div class="nav-links">
+            <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html">About</a>
                 <a href="index2.html">Approach</a>
                 <a href="index3.html">What We Do</a>
                 <a href="index4.html">What We Have Done</a>
-                <a href="index6.html">Download</a>
+                <a href="index6.html">Download </a>
             </div>
-            <a href="index5.html" class="btn-catalog active">
-                <i class="ri-book-read-line"></i> Catalog
-            </a>
+
+            <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog active">
+                    <i class="ri-book-read-line"></i> Catalog
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <section class="catalog-section">
         <div class="container">
-            <!-- Judul masuk duluan -->
             <h2 class="catalog-title reveal">In House <span class="text-yellow">Training</span></h2>
             
-            <!-- Kolom pencarian masuk belakangan -->
             <div class="search-container reveal delay-1">
                 <i class="ri-search-line"></i>
                 <input type="text" placeholder="Temukan Training AK Learning">
             </div>
 
             <div class="catalog-grid">
-                <!-- Kartu-kartu program, masing-masing dikasih delay biar munculnya gantian -->
                 <div class="card teal reveal delay-1">
                     <div class="card-header">TRAINING FOR TRAINERS</div>
                     <div class="card-body">
@@ -362,7 +369,6 @@
         </div>
     </footer>
 
-    <!-- Tombol floating WhatsApp/Kontak -->
     <a href="contact.html" class="floating-btn-form" title="Isi Form Pendaftaran">
         <div class="floating-content">
             <i class="ri-edit-2-line"></i>
@@ -370,11 +376,10 @@
         </div>
     </a>
 
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-         
+            // --- Logika Pencarian Kartu ---
             const searchInput = document.querySelector('.search-container input');
             const cards = document.querySelectorAll('.card');
 
@@ -393,7 +398,7 @@
                 });
             });
 
-            
+            // --- Animasi Scroll ---
             const reveals = document.querySelectorAll(".reveal");
             const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 
@@ -407,6 +412,22 @@
             }, revealOptions);
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // --- Logika Hamburger Menu Mobile ---
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
         });
     </script>
 </body>

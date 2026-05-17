@@ -15,24 +15,33 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">AK Learning</div>
-            <div class="nav-links">
+            <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html" class="active">About</a>
                 <a href="index2.html">Approach</a>
                 <a href="index3.html">What We Do</a>
                 <a href="index4.html" >What We Have Done</a>
-                <a href="index6.html">Download Ebook</a>
+                <a href="index6.html">Download</a>
             </div>
-            <a href="index5.html" class="btn-catalog">
-                <i class="ri-book-read-line"></i> Catalog
-            </a>
+
+            <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog">
+                    <i class="ri-book-read-line"></i> Catalog
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <section class="about-hero">
         <div class="container about-flex">
-            <!-- Tambah class reveal biar ada efek pas buka halaman -->
             <div class="about-text reveal">
                 <h1 class="text-yellow">AK LEARNING <br> DEVELOPMENT</h1>
                 <p>
@@ -46,19 +55,18 @@
                         <p class="stat-desc">Tahun <br> Pengalaman</p>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number text-teal">13+</span>
+                        <span class="stat-number text-teal">1000+</span>
                         <p class="stat-desc">Program <br> Terselesaikan</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Tambah class reveal dan delay -->
             <div class="about-images reveal delay-1">
                 <div class="img-wrapper main-img">
                     <img src="img/training-session.jpg" alt="Training Session">
                 </div>
                 <div class="img-wrapper sub-img">
-                    <img src="img/speaker.jpg" alt="Speaker">
+                    <img src="img/speaker2.jpg" alt="Speaker">
                 </div>
             </div>
         </div>
@@ -66,7 +74,6 @@
 
     <section class="vision-mission">
         <div class="container">
-            <!-- Animasi saat di-scroll ke bagian Visi Misi -->
             <h2 class="section-title text-yellow reveal">VISI & MISI</h2>
             
             <div class="vm-grid">
@@ -135,13 +142,10 @@
         </div>
     </footer>
 
-    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            
+            // Animasi Scroll
             const reveals = document.querySelectorAll(".reveal");
-
-            
             const revealOptions = {
                 threshold: 0.15,
                 rootMargin: "0px 0px -50px 0px"
@@ -151,7 +155,6 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("active");
-                       
                         observer.unobserve(entry.target);
                     }
                 });
@@ -160,6 +163,22 @@
             reveals.forEach(reveal => {
                 revealOnScroll.observe(reveal);
             });
+
+           
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
         });
     </script>
 </body>

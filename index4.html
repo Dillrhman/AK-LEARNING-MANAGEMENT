@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
     
-    <!-- Pastikan approach.css sudah terhubung untuk load navbar & footer -->
     <link rel="stylesheet" href="css/approach.css">
     <link rel="stylesheet" href="css/what_we_have_done.css">
 </head>
@@ -16,28 +15,36 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">AK Learning</div>
-            <div class="nav-links">
+            <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="AK Learning Logo" class="logo-img">
+        </a>
+            
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index1.html">About</a>
                 <a href="index2.html">Approach</a>
                 <a href="index3.html">What We Do</a>
                 <a href="index4.html" class="active">What We Have Done</a>
-                <a href="index6.html">Download</a>
+                <a href="index6.html">Download </a>
             </div>
-            <a href="index5.html" class="btn-catalog">
-                <i class="ri-book-read-line"></i> Catalog
-            </a>
+
+            <div class="nav-actions">
+                <a href="index5.html" class="btn-catalog">
+                    <i class="ri-book-read-line"></i> Catalog
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <section class="history-section">
         <div class="container">
-            <!-- Judul pakai animasi masuk -->
             <h1 class="main-title reveal">WHAT WE HAVE DONE</h1>
             
             <div class="history-grid">
-                <!-- Tambah class reveal & delay biar munculnya gantian -->
                 <div class="history-card reveal delay-1">
                     <div class="card-header">
                         <i class="ri-medal-line icon-yellow"></i>
@@ -104,6 +111,27 @@
                         <li>People Development - Re Skilling & Up Skilling Guru SMK Kejuruan OTKP se-Indonesia Gelombang 1 & 2 - B4TK Bisparbud & Kementerian Pendidikan Kebudayaan.</li>
                     </ul>
                 </div>
+
+                 <div class="history-card reveal delay-2">
+                    <div class="card-header">
+                        <i class="ri-medal-line icon-yellow"></i>
+                        <h2 class="year">2025</h2>
+                    </div>
+                    <ul class="list-content">
+                        <li>People Development - Re Skilling & Up Skilling Guru SMK Kejuruan Manajemen Perkantoran se-Indonesia Gelombang 1-4 - BBPPMPV Bisnis & Pariwisata Kemendikdasmen</li>
+                    </ul>
+                </div>
+
+                 <div class="history-card reveal delay-2">
+                    <div class="card-header">
+                        <i class="ri-medal-line icon-yellow"></i>
+                        <h2 class="year">2026</h2>
+                    </div>
+                    <ul class="list-content">
+                        <li>People Development - Re Skilling & Up Skilling Guru SMK Kejuruan Manajemen Perkantoran se-Indonesia Gelombang 1-2 - BBPPMPV Bisnis & Pariwisata Kemendikdasmen</li>
+                        <li>In House Training - AI Optimization for Professional Business-BBPPMPV Bisnis & Pariwisata Kemendikdasmen</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -150,6 +178,7 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Animasi Scroll Reveal
             const reveals = document.querySelectorAll(".reveal");
             const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 
@@ -163,6 +192,22 @@
             }, revealOptions);
 
             reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+            // Hamburger Menu Toggle Logic
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if(menuToggle && navLinks) {
+                const icon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.replace('ri-menu-line', 'ri-close-line');
+                    } else {
+                        icon.classList.replace('ri-close-line', 'ri-menu-line');
+                    }
+                });
+            }
         });
     </script>
 </body>

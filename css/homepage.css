@@ -1,5 +1,4 @@
 :root {
-    /* Warna dan layout asli, tidak ada yang dirubah */
     --primary: #059A87; 
     --secondary: #F4B700; 
     --purple-dark: #2B185A; 
@@ -7,9 +6,7 @@
     --white: #ffffff;
     --font-poppins: 'Poppins', sans-serif;
     
-    /* Kurva animasi bawaan */
     --bezier: cubic-bezier(0.25, 1, 0.5, 1);
-    /* Kurva animasi baru yang lebih mulus ala 2026 */
     --smooth-bezier: cubic-bezier(0.65, 0, 0.35, 1); 
 }
 
@@ -28,7 +25,6 @@ body {
     position: relative;
 }
 
-/* Navbar kembali jadi putih solid seperti awal */
 .navbar {
     background-color: var(--white);
     padding: 20px 0;
@@ -36,7 +32,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* Bayangan sedikit diperhalus biar lebih modern */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); 
     transition: all 0.4s var(--smooth-bezier);
 }
 
@@ -56,6 +52,17 @@ body {
     letter-spacing: -0.5px;
 }
 
+.logo-img {
+    max-height: 50px; 
+    width: auto;
+    display: block;
+}
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .nav-links {
     display: flex;
     gap: 32px;
@@ -71,7 +78,6 @@ body {
     transition: color 0.3s var(--smooth-bezier);
 }
 
-/* Animasi garis bawah menu dibikin muncul dari kiri ke kanan */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -88,7 +94,6 @@ body {
     width: 100%;
 }
 
-/* Tombol navbar dikasih efek membesar sedikit (bouncy) pas di-hover */
 .btn-catalog {
     background-color: var(--primary);
     color: var(--white);
@@ -110,7 +115,16 @@ body {
     box-shadow: 0 10px 20px rgba(5, 154, 135, 0.15);
 }
 
-/* Layout Hero persis seperti aslinya */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
 .hero {
     height: calc(100vh - 82px);
     background-color: var(--primary);
@@ -132,7 +146,6 @@ body {
     justify-content: flex-end; 
 }
 
-/* Animasi masuk teks dibikin lebih sinematik */
 .hero-content {
     width: 45%;
     color: var(--white);
@@ -156,7 +169,6 @@ body {
     opacity: 0.95;
 }
 
-/* Tombol utama ditambahkan efek kilap cahaya (Shine Effect) */
 .btn-primary {
     position: relative;
     background-color: var(--secondary);
@@ -167,11 +179,10 @@ body {
     font-weight: 600;
     display: inline-block;
     border: 2px solid var(--secondary);
-    overflow: hidden; /* Penting biar efek kilap nggak keluar batas */
+    overflow: hidden; 
     transition: all 0.4s var(--smooth-bezier);
 }
 
-/* Garis cahaya untuk efek kilap */
 .btn-primary::before {
     content: '';
     position: absolute;
@@ -184,7 +195,6 @@ body {
     transition: left 0.6s ease;
 }
 
-/* Jalankan efek kilap saat di-hover */
 .btn-primary:hover::before {
     left: 150%;
 }
@@ -198,7 +208,6 @@ body {
     cursor: pointer;
 }
 
-/* Animasi fade in yang lebih lembut dari sebelumnya */
 @keyframes smoothReveal {
     0% {
         opacity: 0;
@@ -210,24 +219,58 @@ body {
     }
 }
 
-/* Responsif tetap sama seperti aslinya */
+/* --- Area Responsif --- */
 @media (max-width: 992px) {
     .hero-content { width: 60%; }
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero {
-        background-position: center;
-        background-size: cover;
+    .menu-toggle {
+        display: block;
     }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        transform: translateY(-150%);
+        opacity: 0;
+        z-index: -1;
+        transition: all 0.4s var(--smooth-bezier);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .btn-catalog {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .hero {
+        /* Menghilangkan gambar latar di versi mobile */
+        background-image: none;
+        /* Memastikan warna dasar hijau tetap tampil */
+        background-color: var(--primary);
+    }
+    
     .hero-container { justify-content: center; }
+    
     .hero-content {
         width: 100%;
         text-align: center;
-        background: rgba(5, 154, 135, 0.85); 
+       
+        background: rgba(2, 79, 69, 0.95); 
         padding: 40px 25px;
         border-radius: 24px;
-        backdrop-filter: blur(10px); 
     }
 }
